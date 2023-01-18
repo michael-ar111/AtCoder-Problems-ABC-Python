@@ -5,7 +5,9 @@ def binary_search(data, value):
   while left <= right:
     mid = (left + right)//2
     print(data[mid])
-    # 累積和と2が加算されたものと、累積和のどれかが同じかっていう式が不明！
+    ## 累積和は昇順で増えていっている。それを前提に、二分探索。
+    ## 二分探索は要素の真ん中で区切って、それより多いか少ないかの判定。まず該当の数字valueとあっているかdata[mid]で判定。
+    ## その後[1,2,3,4,5,6,7] なら、4よりdata[mid]が大きいか小さいか判定している。ひたすらループして要素がなくなるまで実施し、なければfalseとなる。
     if data[mid] == value:
       return mid
     elif data[mid] < value:
@@ -13,20 +15,10 @@ def binary_search(data, value):
     else:
       right = mid - 1
   return False
- 
-
 
 
 N = int(input())
 A = list(map(int, input().split()))
-
-# N = 3
-# A = 1,18,1
-
-
-# N = 4
-# A = 1,9,1,9
-
 
 # 円環は2倍した探す
 cake = A + A
@@ -43,7 +35,7 @@ for i, piece in enumerate(cake):
   cumlative_sum[i+1] = cumlative_sum[i] + piece
  
 # 左端固定で二分探索
-## target_sizeが10/1になる数。
+## target_sizeが1/10になる数。
 target_size = sum(A)//10
 for l in range(N):
   target = target_size + cumlative_sum[l]
