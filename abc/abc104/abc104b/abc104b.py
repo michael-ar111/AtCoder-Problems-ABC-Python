@@ -14,11 +14,16 @@ def isAc(S):
 
 print("AC" if isAc(str(input())) else "WA")
 
-#WAになるためコメントアウト
+# 別解
+# S = str(input())
+#
 # if S[0] == "A" and 1 == S[2:-1].count("C"):
 #     S = S.replace("A","")
 #     S = S.replace("C","")
 #     if S.islower():
 #         print("AC")
+#     else:
+#         print("WA")
+# #何も出力されないケースを入れていない為WAとなる。
 # else:
 #     print("WA")
